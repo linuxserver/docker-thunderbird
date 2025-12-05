@@ -1,0 +1,27 @@
+---
+
+# jenkins variables
+project_name: docker-thunderbird
+external_type: na
+custom_version_command: "curl -sX GET http://ppa.launchpad.net/mozillateam/ppa/ubuntu/dists/noble/main/binary-amd64/Packages.gz | gunzip |grep -A 7 -m 1 'Package: thunderbird' | awk -F ': ' '/Version/{print $2;exit}'"
+release_type: stable
+release_tag: latest
+ls_branch: master
+repo_vars:
+  - BUILD_VERSION_ARG = 'THUNDERBIRD_VERSION'
+  - LS_USER = 'linuxserver'
+  - LS_REPO = 'docker-thunderbird'
+  - CONTAINER_NAME = 'thunderbird'
+  - DOCKERHUB_IMAGE = 'linuxserver/thunderbird'
+  - DEV_DOCKERHUB_IMAGE = 'lsiodev/thunderbird'
+  - PR_DOCKERHUB_IMAGE = 'lspipepr/thunderbird'
+  - DIST_IMAGE = 'ubuntu'
+  - MULTIARCH = 'true'
+  - CI = 'true'
+  - CI_WEB = 'true'
+  - CI_PORT = '3001'
+  - CI_SSL = 'true'
+  - CI_DELAY = '120'
+  - CI_DOCKERENV = 'TZ=US/Pacific'
+  - CI_AUTH = 'user:password'
+  - CI_WEBPATH = ''
